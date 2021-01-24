@@ -1,0 +1,26 @@
+<html>
+ <head>
+   <title> Fish </title>
+   <script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+    <script>
+       function start(){
+       sjs.open();
+       var background = new sjs.Image("https://vignette.wikia.nocookie.net/egg-inc/images/7/79/Trophy_Gold.png/revision/latest?cb=20180623184150")
+        background.setSize(sjs.getWidth(), sjs.getHeight());
+
+       var win_txt = new sjs.Text("YOU WIN!!", 35, "yellow");
+       win_txt.centerH();
+
+       var startbtn = new sjs.Button("Go Again?", function(){
+        window.location = "Index.html"
+       });
+       startbtn.center();
+       } //end start
+     </script>
+    </head>
+   <body onload="start()">
+   <h1> Success </h1>
+   
+   <div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

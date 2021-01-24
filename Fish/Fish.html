@@ -1,0 +1,181 @@
+<html>
+<head>
+<title> Fish Game! </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open("target", 800, 500);
+ 
+ //Background Music
+var music = new Audio("Music/only.mp3");
+var toggle = true;
+var musicOn = false;
+sjs.keyDown(SPACE_KEY, function(){
+  if(toggle == true){
+    if(musicOn == false){
+      music.play();
+      musicOn = true;
+    } else { 
+    music.pause();
+    musicOn = false;
+    }
+    toggle = false;
+    setTimeout(function(){
+    toggle = true;
+    },1000);
+  }
+});
+
+var background = new sjs.Image("Images/background.png")
+background.setSize(sjs.getWidth(), sjs.getHeight());
+
+//Extra Credit Text
+var music_txt = new sjs.Text("Press Space to Toggle Music!",28,"green");
+music_txt.centerH();
+setTimeout(function(){
+  music_txt.destroy()
+},2000);
+
+//Random Spaceship Text
+setTimeout(function(){
+var random_spaceshiptxt = new sjs.Image("Images/random_spaceship.GIF")
+random_spaceshiptxt.setSize(500,500);
+random_spaceshiptxt.offset(140,0);
+setTimeout(function(){
+random_spaceshiptxt.destroy();
+}, 5000);
+}, 15000);
+
+//Random Spaceship Properties
+setTimeout(function(){
+  if(Math.random() > 0.5){
+   var spaceship = new sjs.Image("Images/blue_left.png");
+   spaceship.type = "spaceship"
+   spaceship.setSize(100,100);
+   spaceship.moveTo(750,200);
+   spaceship.pushLeft(5);
+   spaceship.friction = 0;
+   spaceship.noBounds = true;
+  } else {
+  var spaceship = new sjs.Image("Images/blue_right.png");
+  spaceship.type = "spaceship"
+  spaceship.setSize(100,100);
+  spaceship.moveTo(-100,200);
+  spaceship.pushRight(5);
+  spaceship.friction = 0;
+  spaceship.noBounds = true;
+  }
+}, 15000);
+
+
+//Player Properties
+var player = new sjs.Image("Images/fish_left.png")
+player.type = "player";
+player.setSize(100,50);
+player.friction = .175;
+player.accel = .225;
+sjs.keyDown(RIGHT_KEY, function(){
+  player.setImage("Images/fish_right.png");
+  player.pushRight();
+});
+sjs.keyDown(LEFT_KEY, function(){
+	player.setImage("Images/fish_left.png");
+	player.pushLeft();
+});
+sjs.keyDown(UP_KEY, function(){
+	player.pushUp();
+});
+sjs.keyDown(DOWN_KEY, function(){
+	player.pushDown();
+});
+sjs.keyDown(D_KEY, function(){
+	player.setImage("Images/fish_right.png");
+	player.pushRight();
+});
+sjs.keyDown(A_KEY, function(){
+	player.setImage("Images/fish_left.png");
+    player.pushLeft();
+});
+sjs.keyDown(W_KEY, function(){
+	player.pushUp();
+});
+sjs.keyDown(S_KEY, function(){
+	player.pushDown();
+});
+//powerup variable
+setInterval(function(){
+var x = Math.floor(Math.random()*783);
+var y = Math.floor(Math.random()*470);
+var crumbs = new sjs.Image("Images/crumbs.png");
+crumbs.type = "crumbs";
+crumbs.setGravity();
+crumbs.setSize(17,30);
+crumbs.noBounds = true;
+crumbs.moveTo(x,y);
+crumbs.friction =.2;
+}, 5000);
+sjs.onHit("crumbs","bottom_screen",function(x,y){
+    x.destroy();
+});
+sjs.onHit("player","crumbs",function(x,y){
+	x.grow(100, 50);
+	setTimeout(function(){
+		x.grow(-100,-50);
+	},4000);
+	y.destroy();
+});
+//Enemies
+setInterval(function(){
+	var speed = Math.round(1 + Math.random()*10);
+   if(Math.random() > 0.5){
+   	var enemy = new sjs.Image("Images/fish2_right.png");
+   	enemy.type = "enemy";
+   	enemy.setSize(100,50);
+   	enemy.friction =0;
+   	enemy.noBounds = true;
+   	enemy.pushRight(speed);
+   	enemy.scaleSize(.5 + Math.random() * 1.2);
+    enemy.moveTo(-enemy.getWidth(), Math.random()*(enemy.getClamp().y));
+   } else{
+   var enemy = new sjs.Image("Images/fish2_left.png");
+   enemy.type = "enemy";
+   enemy.setSize(100,50);
+   enemy.friction =0;
+   enemy.noBounds =true;
+   enemy.pushLeft(speed);
+   enemy.scaleSize(.5 + Math.random() * 1.2);
+   enemy.moveTo(sjs.getWidth(), Math.random()*(enemy.getClamp().y));
+   }
+},1000);
+sjs.left_screen.offset(-500);
+sjs.right_screen.offset(500);
+sjs.onHit("enemy", ["left_screen", "right_screen"], function(x,y){
+    x.destroy();
+});
+//Score
+var score = 0;
+var score_txt = new sjs.Text("Score: 0",21, "orange");
+sjs.onHit("player","enemy", function(x,y){
+    if(x.getWidth() > y.getWidth() && x.getHeight() > y.getHeight()) {
+      score = score + 1;
+      score_txt.setText("Score: " +score);
+      localStorage.setItem("score", score);
+     x.grow(10,5);
+     if(score >= 20){
+      window.location = "win.html"
+     }
+    } else{
+    x.destroy();
+    window.location = "gameover.html"
+    }
+    y.destroy();
+}); 
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Fish Game! </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
