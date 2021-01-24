@@ -1,0 +1,265 @@
+<html>
+<head>
+<title> Platform Game </title>
+<script src="https://simplycodingcourses.com/files/simply.js"></script>
+<script>
+var level = [];
+function start(){
+sjs.open("target",800,500);
+
+var background = new sjs.Image("Images/background.png");
+background.setSize(2500,500);
+
+sjs.loadImageArray('[{"width":136,"height":30,"x":550,"y":121,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":414,"y":120,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":277,"y":119,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":141,"y":118,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":3,"y":117,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1235.3540039453655,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1097.3540039453655,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":959.3540039453655,"y":123,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":824.3540039453655,"y":122,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":687.3540039453655,"y":122,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1779.7028808987961,"y":125,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1642.7028808987961,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1506.7028808987961,"y":125,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1370.7028808987961,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1915,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":2188,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":2052,"y":124,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":2346,"y":317,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":66,"height":15,"x":2383.5,"y":303.5,"sx":0,"sy":0,"topSpeed":10,"src":"Images/jump_pad.png","alt":"add text","type":"jump_pad","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":2192,"y":384,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":31,"height":80,"x":2121.5,"y":420,"sx":0,"sy":0,"topSpeed":10,"src":"Images/flag_bad.png","alt":"add text","type":"flag","friction":0.05,"classType":"Image"},{"width":66,"height":15,"x":1993.5,"y":485,"sx":0,"sy":0,"topSpeed":10,"src":"Images/jump_pad.png","alt":"add text","type":"jump_pad","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":865.0467519910289,"y":264,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":1092.1718750000382,"y":349,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":917.3460106475613,"y":444,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":480.6855757831763,"y":393,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":136,"height":30,"x":341,"y":465,"sx":0,"sy":0,"topSpeed":10,"src":"Images/platform.png","alt":"add text","type":"platform","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":609.8907484454403,"y":407,"sx":-1.5,"sy":0,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":690.8907484454403,"y":450,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":21,"height":30,"x":916.2857679766903,"y":214,"sx":0,"sy":0,"topSpeed":10,"src":"Images/power_up.png","alt":"add text","type":"powerUp","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":873.0933851641903,"y":407,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":855.5933851641903,"y":456,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":909.5933851641903,"y":384,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1076.5933851641903,"y":292,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1035.5933851641903,"y":334,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1017.5933851641903,"y":394,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1008.5933851641903,"y":194,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1049.5933851641903,"y":227,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":955.5933851641903,"y":201,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":964.5933851641903,"y":375,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":414.73124832337,"y":354,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":394.73124832337,"y":413,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":470.73124832337,"y":340,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1469.0942244342596,"y":454,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1370.0942244342596,"y":449,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":1395.0942244342596,"y":407,"sx":-1.5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":1651.0942244342596,"y":453,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1553.0942244342596,"y":454,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":1578.0942244342596,"y":407,"sx":-1.5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":81,"height":93,"x":1395.0942244342596,"y":407,"sx":-1.5,"sy":0,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":81,"height":93,"x":1578.0942244342596,"y":407,"sx":-1.5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":1827.4533552936346,"y":452,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1728.4533552936346,"y":453,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":81,"height":93,"x":1753.4533552936346,"y":407,"sx":-5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":81,"height":93,"x":1753.4533552936346,"y":407,"sx":-5,"sy":1,"ay":1,"topSpeed":10,"src":"Images/l_enemy.gif","alt":"add text","type":"enemy","facingLeft":true,"left_img":"Images/l_enemy.gif","right_img":"Images/r_enemy.gif","friction":0,"classType":"Image","noBounds":true},{"width":25,"height":30,"x":1731.5953882005133,"y":89,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1813.5953882005133,"y":92,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1890.5953882005133,"y":91,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1973.5953882005133,"y":91,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":2049.5953882005133,"y":90,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":2130.5953882005133,"y":88,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":2200.5953882005133,"y":88,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":2268.5953882005133,"y":86,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1579.347524430982,"y":89,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1657.347524430982,"y":89,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1041.9855096604742,"y":92,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1111.9855096604742,"y":91,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1183.9855096604742,"y":89,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1263.9855096604742,"y":89,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1338.9855096604742,"y":87,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1417.9855096604742,"y":88,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":1498.9855096604742,"y":87,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":519.7254693772711,"y":84,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":595.7254693772711,"y":82,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":671.7254693772711,"y":84,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":749.7254693772711,"y":86,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":824.7254693772711,"y":91,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":894.7254693772711,"y":94,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":968.7254693772711,"y":94,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":205.5,"y":84,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":277.5,"y":82,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":355.5,"y":86,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":25,"height":30,"x":439.5,"y":85,"sx":0,"sy":0,"topSpeed":10,"src":"Images/score.gif","alt":"add text","type":"score","friction":0.05,"classType":"Image"},{"width":17,"height":50,"x":22.5,"y":54,"sx":0,"sy":0,"topSpeed":10,"src":"Images/bonus_key.png","alt":"add text","type":"bonus_key","friction":0.05,"classType":"Image"}]');
+
+//background music
+
+var music = new Audio("Music/shelf_life.mp3");
+var musicOn = false;
+var toggle = true;
+
+sjs.keyDown(SPACE_KEY, function(){
+  if(toggle == true){
+    if(musicOn == false){
+      musicOn = true;
+      music.play();
+    } else {
+      musicOn = false;
+      music.pause();
+    }
+    toggle = false;
+    setTimeout(function(){
+      toggle = true;
+    }, 1000);
+  }
+});
+
+var music_txt = new sjs.Text("Press Space to Toggle Music",25,"white");
+  music_txt.centerH();
+setTimeout(function(){
+  music_txt.destroy();
+}, 2000);
+
+//Player Properties
+var player = new sjs.Image("Images/r_idle.png")
+player.type = "player"
+player.setSize(85,93)
+player.setGravity(3)
+player.center().bottom();
+player.offset(-100,0);
+player.friction = .5;
+player.noBounds = true;
+
+sjs.scrollable(player,background);
+
+//Player Controls
+
+var r_img = ["Images/r_walk-0.png", "Images/r_walk-1.png", "Images/r_walk-2.png", "Images/r_walk-3.png", "Images/r_walk-4.png", "Images/r_walk-5.png", "Images/r_walk-6.png", "Images/r_walk-7.png"];
+
+var l_img = ["Images/l_walk-0.png", "Images/l_walk-1.png", "Images/l_walk-2.png", "Images/l_walk-3.png", "Images/l_walk-4.png", "Images/l_walk-5.png", "Images/l_walk-6.png", "Images/l_walk-7.png"];
+
+var r_facing = true;
+var l_track = 0;
+var r_track = 0;
+
+sjs.keyDown(RIGHT_KEY, function(){
+ r_facing = true;
+ r_track = r_track + 1;
+ player.pushRight(2);
+ player.setImage(r_img[r_track]);
+ if(r_track == 7){
+ 	r_track = 0;
+ }
+ if(r_track >= 8){
+ 	player.setImage("Images/r_jump.png")
+ }
+});
+
+sjs.keyDown(LEFT_KEY, function(){
+r_facing = false;
+l_track = l_track + 1;
+player.pushLeft(2);
+player.setImage(l_img[l_track]);
+if(l_track == 7){
+	l_track = 0;
+}
+if(l_track >= 8){
+	player.setImage("Images/l_jump.png")
+}
+});
+
+//Jump properties
+
+var canJump = true;
+sjs.keyDown(UP_KEY, function(){
+if(canJump == true){
+	canJump = false;
+   player.pushUp(50);
+      }
+      if(r_facing == true){
+      	player.setImage("Images/r_jump.png")
+      	r_track = 8;
+      } else {
+      	player.setImage("Images/l_jump.png")
+      	l_track = 8;
+      }
+});
+
+window.addEventListener("keyup", function(e){
+   if(e.keyCode == RIGHT_KEY){ 
+        player.setImage("Images/r_idle.png");
+        r_track = 0;
+   } else if(e.keyCode == LEFT_KEY){
+     player.setImage("Images/l_idle.png");
+     l_track = 0;
+   }
+});
+
+sjs.keyDown(DOWN_KEY, function(){
+  if(canShoot == true){
+    canShoot = false;
+    var laser = new sjs.Image("Images/laser.png");
+    laser.type = "laser";
+    laser.setSize(100, 50);
+    laser.friction = 0;
+    laser.noBounds = true;
+    if(r_facing == true){
+      laser.moveTo(player.getX()+44,player.getY()+7);
+      laser.pushRight(25.5);
+    } else {
+      laser.moveTo(player.getX()+-60,player.getY()+7);
+      laser.pushLeft(25.5);
+    }
+    setTimeout(function(){
+      canShoot = true;
+    },1000);
+  }
+});
+
+//lotta onHits
+
+sjs.onHit("player","platform", function(x,y){
+   sjs.stoppedBy(x,y);
+   if(canJump == false && x.y < y.y-85){
+      canJump = true;
+      r_track = 0;
+      l_track = 0;
+   }
+});
+
+sjs.onHit("enemy","bottom_screen", function(x,y){
+  sjs.stoppedBy(x,y);
+});
+
+sjs.onHit("enemy",["right_screen","left_screen"], function(x,y){
+  sjs.bounceOff(x,y);
+});
+
+sjs.onHit("enemy","platform", function(x,y){
+  if(x.isAboveOf(y) == true){
+    sjs.stoppedBy(x,y);
+  } else {
+    sjs.bounceOff(x,y);
+  }
+});
+
+sjs.onHit("enemy","score", function(x,y){
+  if(x.isAboveOf(y) == false){
+    sjs.bounceOff(x,y);
+  }
+});
+
+sjs.onHit("player","jump_pad", function(x,y){
+  if(x.isAboveOf(y) == true){
+    player.pushUp(85);
+  } else {
+    sjs.stoppedBy(x,y);
+  }
+});
+
+var bonusVar = false;
+sjs.onHit("player","bonus_key", function(x,y){
+  bonusVar = true;  
+  y.destroy();
+});
+
+sjs.onHit("player","enemy", function(x,y){
+  x.destroy();
+  window.location = "gameover3.html";
+});
+
+sjs.onHit("laser","enemy", function(x,y){
+  y.destroy();
+  x.destroy();
+});
+
+sjs.onHit("laser",["platform","jump_pad","powerUp","flag"], function(x,y){
+sjs.bounceOff(x,y);
+});
+
+sjs.onHit("laser",["left_screen","right_screen"], function(x,y){
+  x.destroy();
+});
+
+var canShoot = false;
+sjs.onHit("player","powerUp", function(x,y){
+  canShoot = true;
+  y.destroy();
+});
+
+var score = 0;
+var score_txt = new sjs.Text("Score: 0", 20, "yellow");
+score_txt.right().offset(-20, 0);
+score_txt.fixed = true;
+sjs.onHit("player","score", function(x,y){
+  score = score + 1;
+  score_txt.setText("Score: "+ score);
+  localStorage.setItem("score", score);
+  y.destroy();
+});
+
+var flagOn = true;
+sjs.onHit("player","flag", function(x,y){
+  x.stop();
+  if(flagOn == true){
+    flagOn = false;
+    setTimeout(function(){
+    y.setImage("Images/flag_none.png");
+    },800);
+
+    setTimeout(function(){
+    y.setImage("Images/flag_win.png");
+    },1600);
+
+    setTimeout(function(){
+      if(bonusVar == true){
+        window.location = "levelBonus.html"
+      } else {
+    window.location = "level4.html";
+  }
+    },2400);
+  }
+});
+
+sjs.onHit("player","bottom_screen",function(x,y){
+sjs.stoppedBy(x,y);
+if(canJump == false){
+	canJump = true;
+	r_track = 0;
+	l_track = 0;
+}
+});
+
+sjs.onHit("player",["right_screen","left_screen","top_screen"],function(x,y){
+ sjs.stoppedBy(x,y);
+});
+
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Platform Level 3 </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+
+var menu_txt = new sjs.Text("Evil Robots",30, "blue");
+menu_txt.centerH();
+
+var designBtn = new sjs.Button("Create Level", function(){
+	window.location = "platform.html";
+});
+designBtn.center();
+
+var playBtn = new sjs.Button("Level 1", function(){
+	window.location = "level1.html"
+});
+playBtn.center().offset(0, 50);
+
+var credits = new sjs.Text("Created by Ethan",15, "white");
+credits.center().bottom()
+
+
+}//end start
+</script>
+</head>
+<body onload="start()">
+<h1> Platform Game </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
