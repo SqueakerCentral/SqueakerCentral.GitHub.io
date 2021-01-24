@@ -1,0 +1,24 @@
+<html>
+<head>
+<title> Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+ var title = new sjs.Text("2 Player Game", 20, "White");
+ title.centerH();
+  var info = new sjs.Text("Player on the left uses W and S keys to move. Player on the right uses Up and Down arrow Keys to move.", 28, "orange");
+  info.centerH().offset(0,30);
+  var startBtn = new sjs.Button("Start", function(){
+  	window.location = "pong2plyr.html"
+  });
+  startBtn.center();
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> 2 Player Menu </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

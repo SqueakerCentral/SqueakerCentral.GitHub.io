@@ -1,0 +1,30 @@
+<html>
+<head>
+<title> Main Menu </title>
+<script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+<script>
+function start(){
+sjs.open();
+var Menu = new sjs.Text("Menu", 20, "White")
+Menu.centerH();
+var HTP = new sjs.Text("Use the Arrow Keys to move the Paddles and Deflect the Ball. Don't let the Ball get past you!", 28, "#ff0");
+HTP.centerH().offset(0,30);
+var startBtn = new sjs.Button("Start", function(){
+	window.location = "pong.html";
+});
+var startBtn2 = new sjs.Button("2 Players!", function(){
+	window.location = "Index2playr.html";
+});
+startBtn.center();
+startBtn2.center().offset(0,50);
+var info_text = new sjs.Text("Created By: Ethan Misura", 25, "black");
+info_text.center().bottom();
+} //end start
+</script>
+</head>
+<body onload="start()">
+<h1> Menu </h1>
+
+<div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
