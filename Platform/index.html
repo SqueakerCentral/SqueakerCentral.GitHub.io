@@ -6,8 +6,9 @@
 function start(){
 sjs.open();
 
-var menu_txt = new sjs.Text("Evil Robots",30, "blue");
+var menu_txt = new sjs.Text("Evil Robots",50, "Orange");
 menu_txt.centerH();
+menu_txt.node.style.background = "Blue"
 
 var designBtn = new sjs.Button("Create Level", function(){
 	window.location = "platform.html";
@@ -22,6 +23,23 @@ playBtn.center().offset(0, 50);
 var credits = new sjs.Text("Created by Ethan",15, "white");
 credits.center().bottom()
 
+//Extra Decoration
+
+var enemy1 = new sjs.Image("Images/l_enemy.gif");
+enemy1.center().offset(73,40)
+
+var img_track = 0;
+walking_img = ["Images/l_walk-0.png","Images/l_walk-1.png","Images/l_walk-2.png","Images/l_walk-3.png","Images/l_walk-4.png","Images/l_walk-5.png","Images/l_walk-6.png","Images/l_walk-7.png"]
+var player = new sjs.Image("Images/l_idle.png");
+player.type = "player";
+player.center().offset(-150,40);
+setInterval(function(){
+img_track = img_track + 1;
+player.setImage(walking_img[img_track]);
+if(img_track == 7){
+	img_track = 0;
+}
+}, 45);
 
 }//end start
 </script>
@@ -29,6 +47,6 @@ credits.center().bottom()
 <body onload="start()">
 <h1> Platform Game </h1>
 
-<div id="target" style="margin:auto;background:grey;"></div>
+<div id="target" style="margin:auto;background:orange;"></div>
 </body>
 </html>
