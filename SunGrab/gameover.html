@@ -1,0 +1,28 @@
+<html>
+ <head>
+   <title> SunGrab </title>
+   <script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+    <script>
+       function start(){
+        sjs.open("target", 462, 540);
+
+        var background = new sjs.Image("Images/background_img.gif");
+        background.setSize(462,540);
+
+       var text = new sjs.Text("The LadyBugs Got You!",35,"yellow");
+       text.centerH();
+
+       var button = new sjs.Button("Try Again?", function(){
+        window.location = "index.html";
+       });
+       button.center();
+
+       } //end start
+     </script>
+    </head>
+   <body onload="start()">
+   <h1> SunGrab! </h1>
+   
+   <div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>

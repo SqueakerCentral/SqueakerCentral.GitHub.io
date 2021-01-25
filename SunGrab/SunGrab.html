@@ -1,0 +1,120 @@
+<html>
+ <head>
+   <title> SunGrab </title>
+   <script src="https://simplycodingcourses.com/files/simplyjs/simply.js"></script>
+    <script>
+       function start(){
+       sjs.open("target", 462, 540);
+       //background
+       var background = new sjs.Image("Images/background_img.gif");
+       background.setSize(462,540);
+        
+        var music_txt = new sjs.Text("Press Space to Toggle Music!",28,"blue");
+          music_txt.centerH().offset(0,50);
+            setTimeout(function(){
+           music_txt.destroy()
+          },2000);
+
+       var flowerpot = new sjs.Image("Images/Clip-art flower.png");
+       flowerpot.type = "flowerpot";
+       flowerpot.center().bottom();
+       flowerpot.offset(-45,0);
+       flowerpot.friction = .175;
+       flowerpot.accel = .225;
+
+       //music
+       var music = new Audio("Music/ukulele.mp3")
+       var toggle = true;
+      var musicOn = false;
+      sjs.keyDown(SPACE_KEY, function(){
+        if(toggle == true){
+         if(musicOn == false){
+              music.play();
+             musicOn = true;
+               } else { 
+               music.pause();
+             musicOn = false;
+                 }
+                toggle = false;
+                setTimeout(function(){
+               toggle = true;
+            },1000);
+           }
+            });
+
+      //sound effects
+      var soundeffect1 = new Audio("Music/reminder.mp3");
+      var soundeffect2 = new Audio("Music/signal.mp3");
+       
+
+       //Just a bunch of keyDown functions 
+
+       sjs.keyDown(RIGHT_KEY,function(){
+        flowerpot.pushRight();
+       });
+
+       sjs.keyDown(LEFT_KEY,function(){
+        flowerpot.pushLeft();
+       });
+
+      //Heres the hard part
+      
+       setInterval(function(){
+          if(Math.random() > .5){
+            var x = Math.floor(Math.random()*458);
+            var Sun = new sjs.Image("Images/Sun.png");
+            Sun.type = "Sun";
+            Sun.noBounds = true;
+            Sun.setGravity(1);
+            Sun.setHeight(40);
+            Sun.moveTo(x,0);
+            Sun.friction =.1;
+          } else {
+            var x = Math.floor(Math.random()*458);
+            var bug = new sjs.Image("Images/ladybug.png");
+            bug.type = "bug";
+            bug.noBounds = true;
+            bug.setGravity(1);
+            bug.setHeight(40);
+            bug.moveTo(x,0);
+            bug.friction =.1;
+          }
+       },1000);
+      
+      sjs.onHit(["bug","Sun"],"bottom_screen", function(x,y){
+      x.destroy();
+      });
+      
+      var score = 5;
+      var score_txt = new sjs.Text("Score: 5",21, "red");
+      sjs.onHit("Sun","flowerpot", function(x,y){
+        x.destroy();
+        soundeffect1.play();
+        score = score + 1;
+        score_txt.setText("Score: " +score);
+        localStorage.setItem("score", score);
+        if(score == 20){
+          window.location = "Win.html"
+        }
+      });
+      sjs.onHit("bug","flowerpot", function(x,y){
+      x.destroy();
+      soundeffect2.play();
+      score = score + -2;
+      score_txt.setText("Score: " +score);
+      if(score <= 0){
+        window.location = "gameover.html";
+      }
+      });
+
+
+      
+      } //End start
+     </script> 
+    </head>
+   <body onload="start()">
+   <h1> SunGrab! </h1>
+   
+   <div id="target" style="margin:auto;background:grey;"></div>
+</body>
+</html>
