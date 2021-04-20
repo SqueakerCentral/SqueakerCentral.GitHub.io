@@ -7,11 +7,21 @@
        sjs.open("target", 550, 550);
        
        //background
-       var background = new sjs.Image("https://i.pinimg.com/originals/41/36/16/41361625cc44df07f81a620eac766468.png");
+       var background = new sjs.Image("Images/background_img.gif");
        background.setSize(550,550);
 
+       //flowerpot w/ trophy
+       var flowerpot = new sjs.Image("Images/Clip-art flower.png");
+       flowerpot.center().bottom();
+       flowerpot.offset(-120,0);
+
+       var trophy = new sjs.Image("Images/pixelated_trophy.png");
+       trophy.center().bottom();
+       trophy.offset(23,0);
+       trophy.setHeight(175);
+
        //txt
-       var wintxt = new sjs.Text("Congragulations! You Win!",32,"yellow");
+       var wintxt = new sjs.Text("Congragulations! You Win!",32,"black");
        wintxt.centerH();
 
 
